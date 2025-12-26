@@ -1,0 +1,59 @@
+:root { --bg:#f5f7fb; --card:#fff; --text:#111; --muted:#667085; --blue:#2563eb; --line:#e6e8ef; }
+*{ box-sizing:border-box; }
+body{ margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP",sans-serif; background:var(--bg); color:var(--text); }
+.wrap{ max-width:980px; margin:32px auto; padding:0 16px; }
+.card{ background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.06); padding:18px; }
+.header{ background:linear-gradient(180deg,#2563eb,#1d4ed8); color:#fff; border:none; }
+.title{ margin:0 0 8px; font-size:22px; }
+.desc{ margin:0 0 14px; color:rgba(255,255,255,.85); line-height:1.4; }
+.tabs{ display:inline-flex; gap:8px; background:rgba(255,255,255,.14); padding:6px; border-radius:999px; }
+.tab{ border:0; border-radius:999px; padding:8px 14px; cursor:pointer; background:transparent; color:#fff; font-weight:700; opacity:.85; }
+.tab.active{ background:#fff; color:#1d4ed8; opacity:1; }
+
+.dropzone{ position:relative; margin-top:14px; border:2px dashed #cfd6ea; border-radius:16px; padding:32px 16px; text-align:center; cursor:pointer; user-select:none; }
+.dropzone:focus{ outline:3px solid rgba(37,99,235,.25); }
+.dz-icon{ font-size:28px; margin-bottom:8px; opacity:.8; }
+.dz-title{ font-size:16px; font-weight:800; }
+.dz-sub{ margin-top:6px; color:var(--muted); }
+.file{ position:absolute; inset:0; opacity:0; cursor:pointer; }
+
+.grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; margin-top:16px; }
+@media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
+
+.h2{ font-size:14px; margin:0 0 8px; color:#0f172a; }
+.preview{ border:1px solid var(--line); border-radius:14px; background:#fafbff; min-height:260px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.preview img{ max-width:100%; max-height:360px; display:none; }
+.preview-empty{ color:var(--muted); }
+
+.panel{ border:1px solid var(--line); border-radius:14px; padding:12px; background:#fff; }
+.row{ display:grid; grid-template-columns: 1fr 1fr auto; gap:10px; align-items:center; margin-bottom:10px; }
+label{ font-size:13px; color:#0f172a; }
+input[type="number"]{ width:100%; padding:8px; border-radius:10px; border:1px solid var(--line); }
+input[type="range"]{ width:100%; }
+.note{ margin:0; color:var(--muted); font-size:12px; line-height:1.4; }
+
+/* Actions (状態UI) */
+.actions{ display:flex; flex-direction:column; gap:10px; margin-top:12px; }
+.fileline{ display:flex; gap:8px; align-items:center; }
+.filelabel{ font-size:12px; color:var(--muted); }
+.filename{ font-size:12px; color:#0f172a; word-break:break-all; }
+.status{ font-size:12px; color:var(--muted); }
+
+button{ border:1px solid transparent; border-radius:12px; padding:10px 12px; cursor:pointer; font-weight:800; }
+.primary{ background:var(--blue); color:#fff; }
+.primary:disabled{ opacity:.5; cursor:not-allowed; }
+.ghost{ background:#f1f5ff; border-color:#dbe3ff; color:#1d4ed8; }
+
+/* 完了時のダウンロードボタン（グリーン） */
+.primary.green{ background:#16a34a; }
+
+.footer{ text-align:center; color:var(--muted); margin-top:14px; }
+
+.download{ background:#16a34a; color:#fff; flex:1; }
+
+/* click-fix: ensure overlays don't steal clicks */
+.tabs, .tab, button, input { pointer-events:auto; }
+.header, .tabs { position:relative; z-index:20; }
+.dropzone { position:relative; z-index:1; }
+.dropzone .dz-inner { position:relative; z-index:1; pointer-events:none; }
+.dropzone .file { position:absolute; inset:0; z-index:2; opacity:0; cursor:pointer; }
